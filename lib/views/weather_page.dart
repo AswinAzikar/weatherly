@@ -31,6 +31,22 @@ class _WeatherPageState extends State<WeatherPage> {
     }
   }
 
+  String getWeatherAnimation(String? mainCondition) {
+//weathers considered : clouds, mist , smog , haze , dust , fog
+    switch (mainCondition?.toLowerCase()) {
+      case null:
+        return Assets.sunny;
+      case 'clouds':
+        return Assets.cloudy;
+        case 'mist':
+        return Assets.misty;
+        
+
+
+      default:
+    }
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -59,10 +75,3 @@ class _WeatherPageState extends State<WeatherPage> {
     );
   }
 }
-
-
-
-
-
-
-//weathers considered : sunny , rainy , cloudy , thunder
