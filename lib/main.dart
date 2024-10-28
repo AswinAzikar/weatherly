@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weatherly/Utils/size_utils.dart';
 import 'package:weatherly/views/weather_page.dart';
 
 void main() {
@@ -10,9 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      builder: (context, child) => Sizer(
+        builder: (context, orientation, deviceType) {
+          return child ?? const SizedBox();
+        },
+      ),
       debugShowCheckedModeBanner: false,
-      home: WeatherPage(),
+      home: const WeatherPage(),
     );
   }
 }
