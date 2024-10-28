@@ -14,7 +14,7 @@ class WeatherPage extends StatefulWidget {
 }
 
 class _WeatherPageState extends State<WeatherPage> {
-  //simple approach and not safe  for production, .env file to store api
+  //simple approach and not safe  for production, use .env file to store api key
   final _weatherService = WeatherService("6d7b7ff40bc21819121c998eed4e69dd");
   Weather? _weather;
 
@@ -34,25 +34,39 @@ class _WeatherPageState extends State<WeatherPage> {
   String getWeatherAnimation(String? mainCondition) {
 //weathers considered : clouds, mist , smog , haze , dust , fog
     switch (mainCondition?.toLowerCase()) {
-      case null:
+      case 'clear':
         return Assets.sunny;
+
       case 'clouds':
         return Assets.cloudy;
-        case 'mist':
+      case 'mist':
         return Assets.misty;
-        
+      case 'smog':
+        return Assets.fog;
+      case 'haze':
+        return Assets.haze;
+      case 'dust':
+        return Assets.dusty;
 
+      case 'rain':
+        return Assets.rainy;
 
+      case 'drizzle':
+        return Assets.rainy;
+
+      case 'thunderstorm':
+        return Assets.thunder;
+      case 'showering':
+        return Assets.rainy;
       default:
+        return Assets.sunny;
     }
   }
 
   @override
   void initState() {
-    // TODO: implement initState
-    super.initState();
-
     _fetchWeather();
+    super.initState();
   }
 
   @override
@@ -66,8 +80,9 @@ class _WeatherPageState extends State<WeatherPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(_weather?.cityName ?? "Loading...."),
+              Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
               Text("${_weather?.temperature.round().toString()} °C"),
-              Lottie.asset(Assets.sunny),
+              Text(_weather?.mainCondition ?? "...loading")
             ],
           ),
         ],
