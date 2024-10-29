@@ -1,30 +1,67 @@
+
 # Weatherly
 
-Weatherly is a Flutter application that fetches the user's current location and retrieves weather information from OpenWeather. The app features both light and dark modes, providing a smooth user experience across different environments. Weatherly is open-sourced and fully compatible with iOS.
+Weatherly is a Flutter application that fetches the current weather based on the user's location using the OpenWeather API. The app supports both light and dark modes, providing a seamless user experience.
 
 ## Features
 
-- **Current Location**: Automatically fetches the user's current geographical location.
-- **Weather Data**: Retrieves real-time weather information from the OpenWeather API.
-- **Light & Dark Mode**: Switches between light and dark themes based on user preference or system settings.
-- **Open Source**: Contributions are welcome! Feel free to fork the repository and submit pull requests.
+- Fetches current weather data using the OpenWeather API.
+- Displays weather information such as temperature and conditions.
+- Supports both light and dark themes.
+- Pull-to-refresh functionality to update weather data.
+- Environment variable management with `flutter_dotenv` for secure API key storage.
 
-## Screenshots
-
-_(Include screenshots of your app here)_
-
-## Installation
+## Getting Started
 
 ### Prerequisites
 
-Make sure you have Flutter installed on your machine. You can follow the official Flutter installation guide [here](https://flutter.dev/docs/get-started/install).
+- Flutter installed on your machine.
+- An OpenWeather API key. You can sign up for a free account at [OpenWeather](https://openweathermap.org/).
 
-### Clone the Repository
+### Installation
 
-```bash
-git clone https://github.com/yourusername/weatherly.git
-cd weatherly
-```
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/AswinAzikar/weatherly.git
+   cd weatherly
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   flutter pub get
+   ```
+
+3. Create a `.env` file in the root of the project and add your OpenWeather API key:
+
+   ```env
+   WEATHER_API_KEY=your_api_key_here
+   ```
+
+   > **Note**: The `.env` file has been added to the `.gitignore` to prevent it from being tracked by Git, ensuring your API key remains secure.
+
+### Usage
+
+1. Run the application:
+
+   ```bash
+   flutter run
+   ```
+
+2. The app will automatically fetch the current weather based on your location.
+
+### Screenshots
+
+(You can add your app screenshots here)
+
+### Contributions
+
+Contributions are welcome! Feel free to create a pull request or open an issue for any enhancements or bugs.
+
+### License
+
+This project is open source and available under the [MIT License](LICENSE).
 
 ### Get Dependencies
 
