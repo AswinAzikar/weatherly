@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class CustomTheme {
+  static Color lightThemeColor = Colors.red,
+      white = Colors.white,
+      black = Colors.black,
+      darkThemeColor = Colors.yellow;
+
   static final lightTheme = ThemeData(
     primaryColor: lightThemeColor,
     brightness: Brightness.light,
@@ -24,9 +29,10 @@ class CustomTheme {
       elevation: 0,
       actionsIconTheme: IconThemeData(color: lightThemeColor),
       systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.transparent,
-          statusBarIconBrightness: Brightness.dark,
-          statusBarBrightness: Brightness.light),
+        systemNavigationBarColor: Colors.black,
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark, // Set to dark for light theme
+      ),
     ),
   );
 
@@ -53,13 +59,9 @@ class CustomTheme {
       actionsIconTheme: IconThemeData(color: darkThemeColor),
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: black,
-        statusBarIconBrightness: Brightness.light,
+        statusBarIconBrightness:
+            Brightness.light, // Set to light for dark theme
       ),
     ),
   );
-
-  static Color lightThemeColor = Colors.red,
-      white = Colors.white,
-      black = Colors.black,
-      darkThemeColor = Colors.yellow;
 }

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:weatherly/Theme/theme.dart';
+
 import 'package:weatherly/Utils/size_utils.dart';
 import 'package:weatherly/constant/constants.dart';
 import 'package:weatherly/controller/theme_controller.dart';
-import 'package:weatherly/gen/assets.gen.dart';
+
 import 'package:weatherly/services/weather_service.dart';
 
+import '../gen/assets.gen.dart';
 import '../model /weather_model.dart';
 
 class WeatherPage extends StatefulWidget {
@@ -38,25 +39,25 @@ class _WeatherPageState extends State<WeatherPage> {
   String getWeatherAnimation(String? mainCondition) {
     switch (mainCondition?.toLowerCase()) {
       case 'clear':
-        return Assets.sunny;
+        return Assets.lotties.sunny;
       case 'clouds':
-        return Assets.cloudy;
+        return Assets.lotties.cloudy;
       case 'mist':
-        return Assets.misty;
+        return Assets.lotties.misty;
       case 'smog':
-        return Assets.fog;
+        return Assets.lotties.fog;
       case 'haze':
-        return Assets.haze;
+        return Assets.lotties.haze;
       case 'dust':
-        return Assets.dusty;
+        return Assets.lotties.dusty;
       case 'rain':
       case 'drizzle':
       case 'showering':
-        return Assets.rainy;
+        return Assets.lotties.rainy;
       case 'thunderstorm':
-        return Assets.thunder;
+        return Assets.lotties.thunder;
       default:
-        return Assets.sunny;
+        return Assets.lotties.sunny;
     }
   }
 
@@ -69,6 +70,10 @@ class _WeatherPageState extends State<WeatherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 0,
+        backgroundColor: Colors.transparent,
+      ),
       extendBodyBehindAppBar: true,
       body: Stack(
         children: [
@@ -90,18 +95,28 @@ class _WeatherPageState extends State<WeatherPage> {
                           Text(
                             _weather?.cityName ?? "Loading....",
                             style: TextStyle(
-                                fontSize: 30.fSize,
-                                fontWeight: FontWeight.bold),
+                              fontSize: 40.fSize,
+                              color: const Color.fromARGB(255, 194, 21, 9),
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'LEDDotMatrix',
+                            ),
                           ),
                           Lottie.asset(
                               getWeatherAnimation(_weather?.mainCondition)),
                           Text(
-                            "${_weather?.temperature.round().toString()} °C",
-                            style: TextStyle(fontSize: 20.fSize),
+                            _weather?.temperature.round().toString() != null
+                                ? "${_weather?.temperature.round().toString()} °C"
+                                : "---",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.fSize,
+                              fontFamily: 'LEDDotMatrix',
+                            ),
                           ),
                           Text(
                             _weather?.mainCondition ?? "...loading",
                             style: TextStyle(
+                                fontFamily: 'LEDDotMatrix',
                                 fontSize: 30.fSize,
                                 fontWeight: FontWeight.bold),
                           ),
