@@ -4,8 +4,10 @@ import 'package:weatherly/Theme/theme.dart';
 import 'package:weatherly/Utils/size_utils.dart';
 import 'package:weatherly/controller/theme_controller.dart';
 import 'package:weatherly/views/weather_page.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+Future<void> main() async {
 
-void main() {
+  await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
 
   Get.put(ThemeController());

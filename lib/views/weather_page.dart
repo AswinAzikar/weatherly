@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 import 'package:weatherly/Utils/size_utils.dart';
 import 'package:weatherly/constant/constants.dart';
 import 'package:weatherly/controller/theme_controller.dart';
-
 import 'package:weatherly/services/weather_service.dart';
 
 import '../gen/assets.gen.dart';
@@ -20,7 +20,8 @@ class WeatherPage extends StatefulWidget {
 
 class _WeatherPageState extends State<WeatherPage> {
   final ThemeController _themeController = Get.put(ThemeController());
-  final _weatherService = WeatherService("6d7b7ff40bc21819121c998eed4e69dd");
+  final _weatherService = WeatherService(
+      dotenv.env['WEATHER_API_KEY']!); 
   Weather? _weather;
 
   _fetchWeather() async {
