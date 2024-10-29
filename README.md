@@ -115,7 +115,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 - [Flutter](https://flutter.dev/) for the framework.
 - [OpenWeather](https://openweathermap.org/) for providing the weather API.
-- [Provider](https://pub.dev/packages/provider) for state management.
+- [getx](https://pub.dev/packages/get) for state management.
 
 ## Contact
 
