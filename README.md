@@ -52,6 +52,11 @@ Weatherly is a Flutter application that fetches the current weather based on the
 2. The app will automatically fetch the current weather based on your location.
 
 ### Screenshots
+
+![image](https://github.com/user-attachments/assets/063dc4aa-aa20-4c4f-9f07-c81afd9a944f)
+
+![image](https://github.com/user-attachments/assets/9379f535-c8e0-4dfc-aacd-aa48e9f396ad)
+
 ![image](https://github.com/user-attachments/assets/1d4d8869-99b4-4d05-9a82-73563dbc0112)
 
 
