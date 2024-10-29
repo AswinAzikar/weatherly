@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:weatherly/Theme/theme.dart';
+import 'package:weatherly/Utils/size_utils.dart';
 import 'package:weatherly/constant/constants.dart';
+import 'package:weatherly/controller/theme_controller.dart';
 import 'package:weatherly/gen/assets.gen.dart';
 import 'package:weatherly/services/weather_service.dart';
 
@@ -14,7 +18,7 @@ class WeatherPage extends StatefulWidget {
 }
 
 class _WeatherPageState extends State<WeatherPage> {
-  //simple approach and not safe  for production, use .env file to store api key
+  final ThemeController _themeController = Get.put(ThemeController());
   final _weatherService = WeatherService("6d7b7ff40bc21819121c998eed4e69dd");
   Weather? _weather;
 
@@ -32,11 +36,9 @@ class _WeatherPageState extends State<WeatherPage> {
   }
 
   String getWeatherAnimation(String? mainCondition) {
-//weathers considered : clouds, mist , smog , haze , dust , fog
     switch (mainCondition?.toLowerCase()) {
       case 'clear':
         return Assets.sunny;
-
       case 'clouds':
         return Assets.cloudy;
       case 'mist':
@@ -47,17 +49,12 @@ class _WeatherPageState extends State<WeatherPage> {
         return Assets.haze;
       case 'dust':
         return Assets.dusty;
-
       case 'rain':
-        return Assets.rainy;
-
       case 'drizzle':
-        return Assets.rainy;
-
-      case 'thunderstorm':
-        return Assets.thunder;
       case 'showering':
         return Assets.rainy;
+      case 'thunderstorm':
+        return Assets.thunder;
       default:
         return Assets.sunny;
     }
@@ -72,18 +69,49 @@ class _WeatherPageState extends State<WeatherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: [
           Column(
-            //     crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(_weather?.cityName ?? "Loading...."),
-              Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
-              Text("${_weather?.temperature.round().toString()} °C"),
-              Text(_weather?.mainCondition ?? "...loading")
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        _weather?.cityName ?? "Loading....",
+                        style: TextStyle(fontSize: 30.fSize),
+                      ),
+                      Lottie.asset(
+                          getWeatherAnimation(_weather?.mainCondition)),
+                      Text(
+                        "${_weather?.temperature.round().toString()} °C",
+                        style: TextStyle(fontSize: 20.fSize),
+                      ),
+                      Text(
+                        _weather?.mainCondition ?? "...loading",
+                        style: TextStyle(fontSize: 30.fSize),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ],
+          ),
+          Positioned(
+            top: 20,
+            right: 0,
+            child: Obx(() => IconButton(
+                  icon: Icon(
+                      _themeController.currentTheme.value == ThemeMode.dark
+                          ? Icons.dark_mode
+                          : Icons.light_mode),
+                  onPressed: () {
+                    _themeController.switchTheme();
+                    Get.changeThemeMode(_themeController.currentTheme.value);
+                  },
+                )),
           ),
         ],
       ),
