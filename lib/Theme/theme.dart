@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:weatherly/Utils/size_utils.dart';
-import 'package:weatherly/main.dart';
 
 class CustomTheme {
-  // light theme
   static final lightTheme = ThemeData(
     primaryColor: lightThemeColor,
     brightness: Brightness.light,
@@ -21,19 +18,18 @@ class CustomTheme {
       titleTextStyle: TextStyle(
         fontWeight: FontWeight.w500,
         color: black,
-        fontSize: 23, //20
+        fontSize: 23,
       ),
       iconTheme: IconThemeData(color: lightThemeColor),
       elevation: 0,
       actionsIconTheme: IconThemeData(color: lightThemeColor),
       systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        statusBarIconBrightness: Brightness.dark,
-      ),
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.light),
     ),
   );
 
-  // dark theme
   static final darkTheme = ThemeData(
     primaryColor: darkThemeColor,
     brightness: Brightness.dark,
@@ -50,7 +46,7 @@ class CustomTheme {
       titleTextStyle: TextStyle(
         fontWeight: FontWeight.w500,
         color: white,
-        fontSize: 23, //20
+        fontSize: 23,
       ),
       iconTheme: IconThemeData(color: darkThemeColor),
       elevation: 0,
@@ -62,7 +58,6 @@ class CustomTheme {
     ),
   );
 
-  // colors
   static Color lightThemeColor = Colors.red,
       white = Colors.white,
       black = Colors.black,

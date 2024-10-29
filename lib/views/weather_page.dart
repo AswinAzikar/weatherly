@@ -69,38 +69,52 @@ class _WeatherPageState extends State<WeatherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       body: Stack(
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
+          RefreshIndicator.adaptive(
+            onRefresh: () => _fetchWeather(),
+            child: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Column(
+                  SizedBox(
+                    height: 0.3.fSize * SizeUtils.height,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        _weather?.cityName ?? "Loading....",
-                        style: TextStyle(fontSize: 30.fSize),
-                      ),
-                      Lottie.asset(
-                          getWeatherAnimation(_weather?.mainCondition)),
-                      Text(
-                        "${_weather?.temperature.round().toString()} °C",
-                        style: TextStyle(fontSize: 20.fSize),
-                      ),
-                      Text(
-                        _weather?.mainCondition ?? "...loading",
-                        style: TextStyle(fontSize: 30.fSize),
+                      Column(
+                        children: [
+                          Text(
+                            _weather?.cityName ?? "Loading....",
+                            style: TextStyle(
+                                fontSize: 30.fSize,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Lottie.asset(
+                              getWeatherAnimation(_weather?.mainCondition)),
+                          Text(
+                            "${_weather?.temperature.round().toString()} °C",
+                            style: TextStyle(fontSize: 20.fSize),
+                          ),
+                          Text(
+                            _weather?.mainCondition ?? "...loading",
+                            style: TextStyle(
+                                fontSize: 30.fSize,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ],
               ),
-            ],
+            ),
           ),
           Positioned(
-            top: 20,
+            top: 25.fSize,
             right: 0,
             child: Obx(() => IconButton(
                   icon: Icon(
