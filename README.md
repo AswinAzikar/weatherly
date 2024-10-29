@@ -53,11 +53,13 @@ Weatherly is a Flutter application that fetches the current weather based on the
 
 ### Screenshots
 
-https://github.com/AswinAzikar/weatherly/blob/master/screenshots/Screenshot_20241029_114911.jpg
+https://github.com![image](https://github.com/user-attachments/assets/2d2f299c-27cf-4871-9263-205ef559580a)
 
-https://github.com/AswinAzikar/weatherly/blob/master/screenshots/Screenshot_20241029_114948.jpg
+https://github.com![image](https://github.com/user-attachments/assets/94ad8e89-2ea6-4bef-93e9-17ac6c523793)
 
-https://github.com/AswinAzikar/weatherly/blob/master/screenshots/Screenshot_20241029_114953.jpg
+https://github.com![image](https://github.com/user-attachments/assets/f2ca0423-7caa-4fbe-97c0-e0958cbef51a)
+
+
 ### Contributions
 
 Contributions are welcome! Feel free to create a pull request or open an issue for any enhancements or bugs.
